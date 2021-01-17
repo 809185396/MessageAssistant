@@ -34,7 +34,7 @@ namespace MessageAssistant.Util
         /// </summary>
         /// <param name="hexString"></param>
         /// <returns></returns>
-        public static byte[] strToToHexByte(string hexString)
+        public static byte[] hexStrToToByte(string hexString)
         {
             hexString = hexString.Replace(" ", "");
             if ((hexString.Length % 2) != 0)
