@@ -14,6 +14,6 @@ namespace MessageAssistant.Model
         public String Name { get; set; } = "";
         public String Description { get; set; } = "";
         public String Endian { get; set; }
-        public abstract int GetBitLength();
+        public abstract int GetLength();
     }
 }

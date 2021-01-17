@@ -56,6 +56,7 @@
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\BlockFieldModel.cs" />
     <Compile Include="Model\CompositeFieldModel.cs" />
     <Compile Include="Model\CompositeFieldFileModel.cs" />
     <Compile Include="Model\CompositeFieldRefModel.cs" />

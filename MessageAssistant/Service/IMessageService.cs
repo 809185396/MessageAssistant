@@ -10,6 +10,7 @@ namespace MessageAssistant.Service
     interface IMessageService
     {
         String Composite(List<FieldModelBase> fieldList);
-        List<FieldModelBase> Decomposite(String message);
+
+        List<FieldModelBase> Decomposite(List<FieldModelBase> fieldList, byte[] message);
     }
 }

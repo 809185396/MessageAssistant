@@ -12,9 +12,9 @@ namespace MessageAssistant.Model
 
         public List<FieldModelBase> Children { get; private set; } = new List<FieldModelBase>();
 
-        public override int GetBitLength()
+        public override int GetLength()
         {
-            return Children.Sum(r => r.GetBitLength());
+            return Children.Sum(r => r.GetLength());
         }
     }
 }

@@ -38,6 +38,9 @@ namespace MessageAssistant
             Console.WriteLine(s1);
             var s2 = buf.GetShort(!BitConverter.IsLittleEndian);
             Console.WriteLine(s2);
+
+            int val = BitConverter.ToInt32(bts1, 2);
+            Console.WriteLine(val);
         }
     }
 }

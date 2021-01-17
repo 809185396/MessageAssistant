@@ -14,9 +14,9 @@ namespace MessageAssistant.Model
         public int Repeat { get; set; }
         public List<FieldModelBase> Children { get; private set; } = new List<FieldModelBase>();
 
-        public override int GetBitLength()
+        public override int GetLength()
         {
-            return Children.Sum(r => r.GetBitLength()) * Repeat;
+            return Children.Sum(r => r.GetLength()) * Repeat;
         }
     }
 }

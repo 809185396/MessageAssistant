@@ -22,7 +22,9 @@ namespace MessageAssistant.Model
         public String DefaultValue { get; set; }
         public String Value { get; set; }
 
-        public override int GetBitLength()
+        public bool IsLittleEndian { get { return Endian == MessageXmlConst.ENDIAN_LITTLE; } }
+
+        public override int GetLength()
         {
             return Length * (MessageXmlConst.UNIT_BYTE == Unit? 8: 1);
         }

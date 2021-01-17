@@ -47,6 +47,8 @@ namespace MessageAssistant.Constant
         public const String TYPE_USHORT = "ushort";
         public const String TYPE_INT = "int";
         public const String TYPE_UINT = "uint";
+        public const String TYPE_LONG = "long";
+        public const String TYPE_ULONG = "ulong";
         public const String TYPE_ASTRING = "ascii";
         public const String TYPE_CP56TIME = "cp56";
 
