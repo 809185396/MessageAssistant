@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MessageAssistant.Model
 {
-    class CompositeFieldRefModel : FieldModelBase
+    class FileFieldModel : FieldModelBase
     {
-        public String RepeatRef { get; set; }
-        public int Repeat { get; set; }
+        public String FileName { get; set; }
+
         public List<FieldModelBase> Children { get; private set; } = new List<FieldModelBase>();
 
         public override int GetLength()

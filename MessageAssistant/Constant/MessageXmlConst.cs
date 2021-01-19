@@ -12,9 +12,11 @@ namespace MessageAssistant.Constant
         public const String MESSAGE = "message";
         public const String CMD = "cmd";
         public const String FIELD = "field";
+        public const String IFFIELD = "if-field";
+        public const String REPEAT_FIELD = "repeat-field";
+        public const String REPEAT_REF_FIELD = "repeat-ref-field";
+        public const String FILE_FIELD = "file-field";
         public const String COMPOSITE_FIELD = "composite-field";
-        public const String COMPOSITE_FIELD_REF = "composite-field-ref";
-        public const String COMPOSITE_FIELD_FILE = "composite-field-file";
         public const String NAME = "name";
         public const String DESCRIPTION = "description";
         public const String ENDIAN = "endian";
@@ -28,8 +30,8 @@ namespace MessageAssistant.Constant
 
         // 组合字段重复次数
         public const String REPEAT = "repeat"; // 引用常数
-        public const String REPEAT_REF = "repeat-ref"; // 重复次数引用字段
-        public const String REPEAT_FILE = "repeat-file"; // 引用的文件
+        public const String REPEAT_REF = "ref"; // 重复次数引用字段
+        public const String FILE_REF = "ref"; // 引用的文件
 
         // 值常量
         // 大小端

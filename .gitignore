@@ -32,3 +32,4 @@
 *.app
 /MessageAssistant/bin
 /MessageAssistant/obj
+/MessageAssistant/*.sln

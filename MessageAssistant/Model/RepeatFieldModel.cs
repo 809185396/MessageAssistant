@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace MessageAssistant.Model
 {
-    class CompositeFieldFileModel : FieldModelBase
+    /// <summary>
+    /// 消息中重复组合字段，子元素重复次数是固定值
+    /// </summary>
+    class RepeatFieldModel :FieldModelBase
     {
-        public String FileName { get; set; }
-
+        public int Repeat { get; set; }
         public List<FieldModelBase> Children { get; private set; } = new List<FieldModelBase>();
 
         public override int GetLength()
         {
-            return Children.Sum(r => r.GetLength());
+            return Children.Sum(r => r.GetLength()) * Repeat;
         }
     }
 }

@@ -56,13 +56,13 @@
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\BlockFieldModel.cs" />
     <Compile Include="Model\CompositeFieldModel.cs" />
-    <Compile Include="Model\CompositeFieldFileModel.cs" />
-    <Compile Include="Model\CompositeFieldRefModel.cs" />
+    <Compile Include="Model\FieldChildModel.cs" />
+    <Compile Include="Model\RepeatFieldModel.cs" />
+    <Compile Include="Model\FileFieldModel.cs" />
+    <Compile Include="Model\RepeatRefFieldModel.cs" />
     <Compile Include="Model\FieldModelBase.cs" />
     <Compile Include="Model\FieldModel.cs" />
-    <Compile Include="Model\FieldReferenceModel.cs" />
     <Compile Include="Model\MessageModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +71,7 @@
     <Compile Include="Service\Impl\MessageModelServiceImpl.cs" />
     <Compile Include="Service\Impl\MessageService.cs" />
     <Compile Include="Util\Assert.cs" />
+    <Compile Include="Util\BitUtil.cs" />
     <Compile Include="Util\ByteBuffer.cs" />
     <Compile Include="Util\Cp56Time2aUtil.cs" />
     <Compile Include="Util\EnumDescriptionConverter.cs" />
@@ -113,6 +114,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MessageFile\V1\cmd_1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

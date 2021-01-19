@@ -26,7 +26,7 @@ namespace MessageAssistant.Service.Impl
         {
             MessageModel model = new MessageModel();
             String strEle = e.OuterXml;
-            String str = e.GetAttributeEx(MessageXmlConst.FIELD);
+            String str = e.GetAttributeEx(MessageXmlConst.NAME);
             Assert.NotNullOrEmpty(str, strEle + " 名称不可以为空");
             model.Name = str;
 
@@ -49,7 +49,7 @@ namespace MessageAssistant.Service.Impl
             {
                 case MessageXmlConst.FIELD:
                     return ReadField(e);
-                case MessageXmlConst.COMPOSITE_FIELD:
+                case MessageXmlConst.REPEAT_FIELD:
                     return ReadCompositeField(e);
             }
             return null;
@@ -70,7 +70,7 @@ namespace MessageAssistant.Service.Impl
 
         private FieldModelBase ReadCompositeField(XmlElement e)
         {
-            CompositeFieldModel model = new CompositeFieldModel();
+            RepeatFieldModel model = new RepeatFieldModel();
             ReadFieldBase(e, model);
             model.Repeat = e.GetAttributeInt(MessageXmlConst.REPEAT);
             model.Children.AddRange(ReadChildren(e));
@@ -79,7 +79,7 @@ namespace MessageAssistant.Service.Impl
 
         private FieldModelBase ReadCompositeFieldRef(XmlElement e)
         {
-            CompositeFieldRefModel model = new CompositeFieldRefModel();
+            RepeatRefFieldModel model = new RepeatRefFieldModel();
             ReadFieldBase(e, model);
             model.RepeatRef = e.GetAttributeEx(MessageXmlConst.REPEAT_REF);
             model.Children.AddRange(ReadChildren(e));

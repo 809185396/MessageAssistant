@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace MessageAssistant.Model
 {
-    class BlockFieldModel : FieldModelBase
+    class RepeatRefFieldModel : RepeatFieldModel
     {
-        public override int GetBitLength()
-        {
-            throw new NotImplementedException();
-        }
+        public String RepeatRef { get; set; }
+
     }
 }
