@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Model\CompositeFieldModel.cs" />
     <Compile Include="Model\FieldChildModel.cs" />
+    <Compile Include="Model\IfFieldModel.cs" />
     <Compile Include="Model\RepeatFieldModel.cs" />
     <Compile Include="Model\FileFieldModel.cs" />
     <Compile Include="Model\RepeatRefFieldModel.cs" />

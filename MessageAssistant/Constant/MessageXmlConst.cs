@@ -26,9 +26,12 @@ namespace MessageAssistant.Constant
         public const String OFFSET = "offset";
         public const String SKIP = "skip";
         public const String UNIT = "unit";
-        public const String Default = "default";
+        public const String DEFAULT = "default";
+        public const String VALUE = "value";
 
         // 组合字段重复次数
+        public const String IF_REF = "ref";
+        public const String IF_RELATION = "relation";
         public const String REPEAT = "repeat"; // 引用常数
         public const String REPEAT_REF = "ref"; // 重复次数引用字段
         public const String FILE_REF = "ref"; // 引用的文件

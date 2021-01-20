@@ -33,15 +33,25 @@ namespace MessageAssistant.Service.Impl
 
             model.Description = e.GetAttributeEx(MessageXmlConst.DESCRIPTION, "");
             str = e.GetAttributeEx(MessageXmlConst.ENDIAN);
-            if (String.Compare(str, MessageXmlConst.ENDIAN_BIG) == 0
-                || String.Compare(str, MessageXmlConst.ENDIAN_LITTLE) == 0)
+            if (String.Compare(str, MessageXmlConst.ENDIAN_LITTLE) == 0)
             {
                 model.Endian = str;
             }
+            else
+            {
+                model.Endian = MessageXmlConst.ENDIAN_BIG;
+            }
                     
             model.Cmd = e.GetAttributeInt(MessageXmlConst.CMD);
-            model.Fields.AddRange(FieldModelServiceBase.ReadChildren(e));
+            model.Fields.AddRange(FieldModelServiceBase.ReadChildren(e));            
             return model;
         }
+
+        public String GetFieldValue(MessageModel model, String name)
+        {
+            String[] path = name.Split('.');
+
+            return String.Empty;
+        }       
     }
 }

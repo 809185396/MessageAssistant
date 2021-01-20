@@ -12,6 +12,11 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 {
     class RepeatRefFieldModelService : FieldModelServiceBase
     {
+        protected override void _Decomposite(FieldModelBase field, ByteBuffer buf)
+        {
+            
+        }
+
         protected override FieldModelBase _Read(XmlElement e)
         {
             RepeatRefFieldModel model = new RepeatRefFieldModel();

@@ -22,18 +22,18 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             return null;
         }
 
-        public static void Decomposite(FieldModel field, ByteBuffer buf)
+        public static void Decomposite(FieldModelBase field, ByteBuffer buf)
         {
             FieldModelServiceBase srv = _getFieldModelBaseService(field);
             if (srv != null)
             {
-                return srv._Decomposite(field, buf);
+                srv._Decomposite(field, buf);
             }
         }
 
         protected abstract FieldModelBase _Read(XmlElement e);
 
-        protected abstract void _Decomposite(FieldModel field, ByteBuffer buf);
+        protected abstract void _Decomposite(FieldModelBase field, ByteBuffer buf);
 
         protected void _Read(XmlElement e, FieldModelBase model)
         {
@@ -43,12 +43,8 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             model.Name = str;
 
             model.Description = e.GetAttributeEx(MessageXmlConst.DESCRIPTION, "");
-            str = e.GetAttributeEx(MessageXmlConst.ENDIAN);
-            if (string.Compare(str, MessageXmlConst.ENDIAN_BIG) == 0
-                || String.Compare(str, MessageXmlConst.ENDIAN_LITTLE) == 0)
-            {
-                model.Endian = str;
-            }
+            str = e.GetAttributeEx(MessageXmlConst.ENDIAN, null);
+            model.Endian = str;
             return;
         }        
  
