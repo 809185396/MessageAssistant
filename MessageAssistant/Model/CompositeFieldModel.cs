@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageAssistant.Constant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,18 @@ namespace MessageAssistant.Model
 {
     class CompositeFieldModel : FieldModelBase
     {
+        public int Length { get; set; }
+
+        public override string GetFieldTypeName()
+        {
+            return MessageXmlConst.COMPOSITE_FIELD;
+        }
+
         public override int GetLength()
         {
-            throw new NotImplementedException();
+            return Length;
         }
+
+        public List<FieldModelBase> Children { get; private set; } = new List<FieldModelBase>();
     }
 }

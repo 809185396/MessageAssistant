@@ -28,5 +28,10 @@ namespace MessageAssistant.Model
         {
             return Length * (MessageXmlConst.UNIT_BYTE == Unit? 8: 1);
         }
+
+        public override string GetFieldTypeName()
+        {
+            return MessageXmlConst.FIELD;
+        }
     }
 }

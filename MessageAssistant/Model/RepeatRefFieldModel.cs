@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageAssistant.Constant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,10 @@ namespace MessageAssistant.Model
     {
         public String RepeatRef { get; set; }
 
+
+        public override string GetFieldTypeName()
+        {
+            return MessageXmlConst.REPEAT_REF_FIELD;
+        }
     }
 }

@@ -68,8 +68,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IMessageModelService.cs" />
     <Compile Include="Service\IMessageService.cs" />
+    <Compile Include="Service\Impl\FieldModelService\CompositeFieldModelService.cs" />
+    <Compile Include="Service\Impl\FieldModelService\FieldModelService.cs" />
+    <Compile Include="Service\Impl\FieldModelService\IfFieldModelService.cs" />
+    <Compile Include="Service\Impl\FieldModelService\RepeatFieldModelService.cs" />
+    <Compile Include="Service\Impl\FieldModelService\RepeatRefFieldModelService.cs" />
     <Compile Include="Service\Impl\MessageModelServiceImpl.cs" />
     <Compile Include="Service\Impl\MessageService.cs" />
+    <Compile Include="Service\Impl\FieldModelService\FieldModelServiceBase.cs" />
     <Compile Include="Util\Assert.cs" />
     <Compile Include="Util\BitUtil.cs" />
     <Compile Include="Util\ByteBuffer.cs" />

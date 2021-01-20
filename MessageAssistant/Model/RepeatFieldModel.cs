@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageAssistant.Constant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,11 @@ namespace MessageAssistant.Model
         public override int GetLength()
         {
             return Children.Sum(r => r.GetLength()) * Repeat;
+        }
+
+        public override string GetFieldTypeName()
+        {
+            return MessageXmlConst.REPEAT_FIELD;
         }
     }
 }

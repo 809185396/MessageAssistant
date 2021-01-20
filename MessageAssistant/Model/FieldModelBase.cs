@@ -15,5 +15,6 @@ namespace MessageAssistant.Model
         public String Description { get; set; } = "";
         public String Endian { get; set; }
         public abstract int GetLength();
+        public abstract String GetFieldTypeName();
     }
 }
