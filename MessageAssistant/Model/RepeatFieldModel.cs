@@ -24,5 +24,10 @@ namespace MessageAssistant.Model
         {
             return MessageXmlConst.REPEAT_FIELD;
         }
+
+        public override string GetValue(string[] path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

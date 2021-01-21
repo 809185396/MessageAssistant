@@ -22,5 +22,10 @@ namespace MessageAssistant.Model
         {
             return MessageXmlConst.FILE_FIELD;
         }
+
+        public override string GetValue(string[] path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

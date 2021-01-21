@@ -21,6 +21,11 @@ namespace MessageAssistant.Model
             return Length;
         }
 
-        public List<FieldModelBase> Children { get; private set; } = new List<FieldModelBase>();
+        public override string GetValue(string[] path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CompositeChildModel> Children { get; private set; } = new List<CompositeChildModel>();
     }
 }

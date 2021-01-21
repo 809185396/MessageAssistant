@@ -20,7 +20,22 @@ namespace MessageAssistant.Service.Impl.FieldModelService
         {
             CompositeFieldModel model = new CompositeFieldModel();
             _Read(e, model);
-            model.Children.AddRange(ReadChildren(e));
+
+            CompositeChildModelService srv = new CompositeChildModelService();
+            var children = e.ChildNodes;
+            for (int i = 0; i < children.Count; ++i)
+            {
+                var childXml = children[i] as XmlElement;
+                if (childXml == null)
+                {
+                    continue;
+                }
+                var child = srv.Read(childXml);
+                if (child != null)
+                {
+                    model.Children.Add(child);
+                }
+            }
             return model;
         }
     }

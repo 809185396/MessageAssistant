@@ -25,5 +25,10 @@ namespace MessageAssistant.Model
         {
             return Children.Sum(r => r.GetLength());
         }
+
+        public override string GetValue(string[] path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace MessageAssistant.Model
             {
                 throw new ArgumentException("");
             }
-            return field.GetValue(path.Skip(1));
+            return field.GetValue(path.Skip(1).ToArray());
         }
     }
 }
