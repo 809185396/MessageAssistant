@@ -12,9 +12,7 @@ namespace MessageAssistant.Model
     /// </summary>
     class FieldModel : FieldModelBase
     {
-        public String Endian { get; set; } = MessageXmlConst.ENDIAN_BIG;
         public int Length { get; set; }
-        public String Unit { get; set; } = MessageXmlConst.UNIT_BYTE;
         public String Type { get; set; }
         public double Rate { get; set; } = 1.0;
         public double Offset { get; set; }
@@ -26,12 +24,21 @@ namespace MessageAssistant.Model
 
         public override int GetLength()
         {
-            return Length * (MessageXmlConst.UNIT_BYTE == Unit? 8: 1);
+            return Length;
         }
 
         public override string GetFieldTypeName()
         {
             return MessageXmlConst.FIELD;
+        }
+
+        public override FieldModelBase GetFieldModelBase(string[] paths)
+        {
+            if (paths.Length != 0)
+            {
+                throw new ArgumentException("");
+            }
+            return this;
         }
     }
 }

@@ -16,7 +16,8 @@ namespace MessageAssistant.Constant
         public const String REPEAT_FIELD = "repeat-field";
         public const String REPEAT_REF_FIELD = "repeat-ref-field";
         public const String FILE_FIELD = "file-field";
-        public const String COMPOSITE_FIELD = "composite-field";
+        public const String BIT_FIELD = "bit-field";
+        public const String BIT_CHILD = "bit-child";
         public const String NAME = "name";
         public const String DESCRIPTION = "description";
         public const String ENDIAN = "endian";
@@ -25,7 +26,6 @@ namespace MessageAssistant.Constant
         public const String RATE = "rate";
         public const String OFFSET = "offset";
         public const String SKIP = "skip";
-        public const String UNIT = "unit";
         public const String DEFAULT = "default";
         public const String VALUE = "value";
 
@@ -40,9 +40,7 @@ namespace MessageAssistant.Constant
         // 大小端
         public const String ENDIAN_BIG = "big";
         public const String ENDIAN_LITTLE = "little";
-        // 字段长度单位
-        public const String UNIT_BIT = "bit";
-        public const String UNIT_BYTE = "byte";        
+     
         // 是否跳过
         public const String SKIP_TRUE = "true";
         public const String SKIP_FALSE = "false";

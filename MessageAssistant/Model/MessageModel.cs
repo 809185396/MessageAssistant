@@ -16,15 +16,16 @@ namespace MessageAssistant.Model
         public String Endian { get; set; } = MessageXmlConst.ENDIAN_BIG;
         public List<FieldModelBase> Fields { get; private set; } = new List<FieldModelBase>();
 
-        public String GetValue(String[] path)
+        public FieldModelBase GetFieldModelBase(String path)
         {
             Assert.NotNullOrEmpty(path, "");
-            FieldModelBase field = Fields.First(r => r.Name == path[0]);
+            String[] paths = path.Split('.');
+            FieldModelBase field = Fields.First(r => r.Name == paths[0]);
             if(field == null)
             {
                 throw new ArgumentException("");
             }
-            return field.GetValue(path.Skip(1).ToArray());
+            return field.GetFieldModelBase(paths.Skip(1).ToArray());
         }
     }
 }

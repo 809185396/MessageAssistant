@@ -10,10 +10,15 @@ using MessageAssistant.Util;
 
 namespace MessageAssistant.Service.Impl.FieldModelService
 {
-    class BitChildModelService
+    class BitChildModelService:FieldModelServiceBase
     {
-        public void Decomposite(BitChildModel child, ByteBuffer buf)
-        {               
+        protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
+        {
+            if(!(field is BitChildModel))
+            {
+                return;
+            }
+            BitChildModel child = (BitChildModel)field;
             double val = 0;
             switch (child.Type)
             {
@@ -53,17 +58,10 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             child.Value = val.ToString();
         }
 
-        public BitChildModel Read(XmlElement e)
+        protected override FieldModelBase _Read(XmlElement e)
         {
             BitChildModel model = new BitChildModel();
-            String strEle = e.OuterXml;
-            String str = e.GetAttributeEx(MessageXmlConst.FIELD);
-            Assert.NotNullOrEmpty(str, strEle + " 名称不可以为空");
-            model.Name = str;
-
-            model.Description = e.GetAttributeEx(MessageXmlConst.DESCRIPTION, "");
-            str = e.GetAttributeEx(MessageXmlConst.ENDIAN, null);
-            model.Endian = str;
+            _Read(e, model);
             model.Length = e.GetAttributeInt(MessageXmlConst.LENGTH);
             model.Type = e.GetAttributeEx(MessageXmlConst.TYPE);
             model.Rate = e.GetAttributeDouble(MessageXmlConst.RATE, 1);

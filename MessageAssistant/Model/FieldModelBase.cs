@@ -16,6 +16,6 @@ namespace MessageAssistant.Model
         public String Endian { get; set; }
         public abstract int GetLength();
         public abstract String GetFieldTypeName();
-        public abstract String GetValue(String[] path);
+        public abstract FieldModelBase GetFieldModelBase(String[] paths);
     }
 }

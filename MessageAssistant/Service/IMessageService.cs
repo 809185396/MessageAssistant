@@ -9,8 +9,7 @@ namespace MessageAssistant.Service
 {
     interface IMessageService
     {
-        byte[] Composite(List<FieldModelBase> fieldList);
-
-        List<FieldModelBase> Decomposite(List<FieldModelBase> fieldList, byte[] message);
+        byte[] Composite(MessageModel model);
+        MessageModel Decomposite(MessageModel model, byte[] message);
     }
 }

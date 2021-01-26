@@ -15,7 +15,7 @@ namespace MessageAssistant
         [STAThread]
         static void Main()
         {
-            Test();
+            // Test2();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainFrm());
@@ -41,6 +41,14 @@ namespace MessageAssistant
 
             int val = BitConverter.ToInt32(bts1, 2);
             Console.WriteLine(val);
+        }
+
+        static void Test2()
+        {
+            String[] paths = new String[] { "123", "456" };
+            paths = paths.Skip(1).ToArray();
+            paths = paths.Skip(1).ToArray();
+            paths = paths.Skip(1).ToArray();
         }
     }
 }

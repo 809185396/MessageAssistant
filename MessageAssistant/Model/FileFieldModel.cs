@@ -23,9 +23,18 @@ namespace MessageAssistant.Model
             return MessageXmlConst.FILE_FIELD;
         }
 
-        public override string GetValue(string[] path)
+        public override FieldModelBase GetFieldModelBase(string[] paths)
         {
-            throw new NotImplementedException();
+            if (paths.Length == 0)
+            {
+                return this;
+            }
+            FieldModelBase field = Children.First(r => r.Name == paths[0]);
+            if (field == null)
+            {
+                throw new ArgumentException("");
+            }
+            return field.GetFieldModelBase(paths.Skip(1).ToArray());
         }
     }
 }

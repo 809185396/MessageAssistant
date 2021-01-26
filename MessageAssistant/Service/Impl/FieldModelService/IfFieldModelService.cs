@@ -12,11 +12,12 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 {
     class IfFieldModelService : FieldModelServiceBase
     {
-        protected override void _Decomposite(FieldModelBase field, ByteBuffer buf)
+        protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
         {
-            if (true)
+            IfFieldModel f = field as IfFieldModel;
+            foreach (var child in f.Children)
             {
-
+                Decomposite(model, child, buf);
             }
         }
 

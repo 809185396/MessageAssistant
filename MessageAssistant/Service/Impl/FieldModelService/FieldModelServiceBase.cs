@@ -22,18 +22,18 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             return null;
         }
 
-        public static void Decomposite(FieldModelBase field, ByteBuffer buf)
+        public static void Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
         {
             FieldModelServiceBase srv = _getFieldModelBaseService(field);
             if (srv != null)
             {
-                srv._Decomposite(field, buf);
+                srv._Decomposite(model, field, buf);
             }
         }
 
         protected abstract FieldModelBase _Read(XmlElement e);
 
-        protected abstract void _Decomposite(FieldModelBase field, ByteBuffer buf);
+        protected abstract void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf);
 
         protected void _Read(XmlElement e, FieldModelBase model)
         {
@@ -85,8 +85,8 @@ namespace MessageAssistant.Service.Impl.FieldModelService
                     return new RepeatFieldModelService();
                 case MessageXmlConst.REPEAT_REF_FIELD:
                     return new RepeatRefFieldModelService();
-                case MessageXmlConst.COMPOSITE_FIELD:
-                    return new CompositeFieldModelService();
+                case MessageXmlConst.BIT_FIELD:
+                    return new BitFieldModelService();
                 default:
                     return null;
             }

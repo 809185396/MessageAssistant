@@ -12,11 +12,15 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 {
     class RepeatFieldModelService : FieldModelServiceBase
     {
-        protected override void _Decomposite(FieldModelBase field, ByteBuffer buf)
+        protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
         {
-            for(int i = 0; i < ((RepeatFieldModel)field).Repeat; ++i)
+            RepeatFieldModel f = field as RepeatFieldModel;
+            for (int i = 0; i < f.Repeat; ++i)
             {
-
+                foreach (var child in f.Children)
+                {
+                    Decomposite(model, child, buf);
+                }
             }
         }
 

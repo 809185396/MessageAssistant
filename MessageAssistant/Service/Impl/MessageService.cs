@@ -12,24 +12,29 @@ namespace MessageAssistant.Service.Impl
 {
     class MessageService : IMessageService
     {
+        public byte[] Composite(MessageModel model)
+        {
+            throw new NotImplementedException();
+        }
+
         public byte[] Composite(List<FieldModelBase> fieldList)
         {
             throw new NotImplementedException();
         }
 
-        public List<FieldModelBase> Decomposite(List<FieldModelBase> fieldList, byte[] message)
+        public MessageModel Decomposite(MessageModel model, byte[] message)
         {
             Assert.NotNullOrEmpty(message, "message can not empty");
-            Assert.NotNullOrEmpty(fieldList, "fiedList can not empty");
+            Assert.NotNull(model, "fiedList can not empty");
             ByteBuffer buf = ByteBuffer.Allocate(message);
-            fieldList.ForEach(r =>
+            model.Fields.ForEach(r =>
             {
                 if (r is FieldModel)
                 {
-                    FieldModelServiceBase.Decomposite((FieldModel)r, buf);
+                    FieldModelServiceBase.Decomposite(model, (FieldModel)r, buf);
                 }
             });
-            return fieldList;
+            return model; 
         }
     }
 }

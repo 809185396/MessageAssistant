@@ -15,7 +15,7 @@ namespace MessageAssistant.Util
         /// <param name="dst"></param>
         /// <param name="srcStart"></param>
         /// <param name="len"></param>
-        static void GetBits(byte[] src, byte[] dst, int srcStart, int len)
+        public static void GetBits(byte[] src, byte[] dst, int srcStart, int len)
         {
             int dstStart = dst.Length * 8 - len;
             TransferBits(src, dst, srcStart, dstStart, len);
@@ -28,7 +28,7 @@ namespace MessageAssistant.Util
         /// <param name="dst"></param>
         /// <param name="srcStart"></param>
         /// <param name="len"></param>
-        static void SetBits(byte[] src, byte[] dst, int dstStart, int len)
+        public static void SetBits(byte[] src, byte[] dst, int dstStart, int len)
         {
             int srcStart = src.Length * 8 - len;
             TransferBits(src, dst, srcStart, dstStart, len);
