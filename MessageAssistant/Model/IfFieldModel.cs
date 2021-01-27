@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MessageAssistant.Constant;
 
 namespace MessageAssistant.Model
 {
     class IfFieldModel : FieldModelBase
     {
-        public String Ref { get; set; }
-
-        public String Relation { get; set; }
-
-        public String Value { get; set; }
+        public String Expression { get; set; }
 
         public List<FieldModelBase> Children { get; private set; } = new List<FieldModelBase>();
         public override string GetFieldTypeName()

@@ -30,10 +30,7 @@ namespace MessageAssistant.Constant
         public const String VALUE = "value";
 
         // 组合字段重复次数
-        public const String IF_REF = "ref";
-        public const String IF_RELATION = "relation";
-        public const String REPEAT = "repeat"; // 引用常数
-        public const String REPEAT_REF = "ref"; // 重复次数引用字段
+        public const String EXPRESSION = "expr";
         public const String FILE_REF = "ref"; // 引用的文件
 
         // 值常量

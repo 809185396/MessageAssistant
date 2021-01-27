@@ -15,6 +15,17 @@ namespace MessageAssistant.Service.Impl.FieldModelService
         protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
         {
             IfFieldModel f = field as IfFieldModel;
+            var expr = PreProcessExpression(model, f.Expression);
+            Object obj = ExpressionUtil.ComplierCode(expr);
+            bool result = false;
+            if(!bool.TryParse(obj.ToString(), out result))
+            {
+                // TODO: 表达式错误
+            }
+            if (!result)
+            {
+                return;
+            }
             foreach (var child in f.Children)
             {
                 Decomposite(model, child, buf);
@@ -25,9 +36,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
         {
             IfFieldModel model = new IfFieldModel();
             _Read(e, model);
-            model.Ref = e.GetAttributeEx(MessageXmlConst.IF_REF);
-            model.Relation = e.GetAttributeEx(MessageXmlConst.IF_RELATION);
-            model.Value = e.GetAttributeEx(MessageXmlConst.VALUE);
+            model.Expression = e.GetAttributeEx(MessageXmlConst.EXPRESSION);
             model.Children.AddRange(ReadChildren(e));
             return model;
         }

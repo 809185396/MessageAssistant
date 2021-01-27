@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Text.RegularExpressions;
 
 namespace MessageAssistant.Service.Impl.FieldModelService
 {
@@ -83,13 +84,42 @@ namespace MessageAssistant.Service.Impl.FieldModelService
                     return new IfFieldModelService();
                 case MessageXmlConst.REPEAT_FIELD:
                     return new RepeatFieldModelService();
-                case MessageXmlConst.REPEAT_REF_FIELD:
-                    return new RepeatRefFieldModelService();
                 case MessageXmlConst.BIT_FIELD:
                     return new BitFieldModelService();
                 default:
                     return null;
             }
+        }
+
+        public static string PreProcessExpression(MessageModel model, String expression)
+        {
+            Regex reg = new Regex(@"\$\{(\w+)\}");
+            int loc = 0;
+            Match m = reg.Match(expression, loc);
+            while (m.Success)
+            {
+                loc += 1;
+                var strReplace = m.Groups[0].Value;
+                var strFieldName = m.Groups[1].Value;
+                var field = model.GetFieldModelBase(strFieldName);
+                String strValue = null;
+                if (field is FieldModel)
+                {
+                    strValue = ((FieldModel)field).Value;
+                }
+                else if (field is BitChildModel)
+                {
+                    strValue = ((BitChildModel)field).Value;
+                }
+                if (String.IsNullOrEmpty(strValue))
+                {
+                    // TODO:
+                }
+                expression = expression.Replace(strReplace, strValue);
+                m = reg.Match(expression, loc);
+            }
+
+            return expression;
         }
     }
 }

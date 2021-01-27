@@ -61,7 +61,6 @@
     <Compile Include="Model\IfFieldModel.cs" />
     <Compile Include="Model\RepeatFieldModel.cs" />
     <Compile Include="Model\FileFieldModel.cs" />
-    <Compile Include="Model\RepeatRefFieldModel.cs" />
     <Compile Include="Model\FieldModelBase.cs" />
     <Compile Include="Model\FieldModel.cs" />
     <Compile Include="Model\MessageModel.cs" />
@@ -74,7 +73,6 @@
     <Compile Include="Service\Impl\FieldModelService\FieldModelService.cs" />
     <Compile Include="Service\Impl\FieldModelService\IfFieldModelService.cs" />
     <Compile Include="Service\Impl\FieldModelService\RepeatFieldModelService.cs" />
-    <Compile Include="Service\Impl\FieldModelService\RepeatRefFieldModelService.cs" />
     <Compile Include="Service\Impl\MessageModelServiceImpl.cs" />
     <Compile Include="Service\Impl\MessageService.cs" />
     <Compile Include="Service\Impl\FieldModelService\FieldModelServiceBase.cs" />
@@ -83,6 +81,7 @@
     <Compile Include="Util\ByteBuffer.cs" />
     <Compile Include="Util\Cp56Time2aUtil.cs" />
     <Compile Include="Util\EnumDescriptionConverter.cs" />
+    <Compile Include="Util\ExpressionUtil.cs" />
     <Compile Include="Util\ExtendFunction.cs" />
     <Compile Include="Util\StringConverter.cs" />
     <Compile Include="Util\WrapMessageBox.cs" />

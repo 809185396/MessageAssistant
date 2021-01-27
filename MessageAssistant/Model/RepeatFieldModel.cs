@@ -12,12 +12,12 @@ namespace MessageAssistant.Model
     /// </summary>
     class RepeatFieldModel :FieldModelBase
     {
-        public int Repeat { get; set; }
+        public String Expression { get; set; }
         public List<FieldModelBase> Children { get; private set; } = new List<FieldModelBase>();
 
         public override int GetLength()
         {
-            return Children.Sum(r => r.GetLength()) * Repeat;
+            return Children.Sum(r => r.GetLength());
         }
 
         public override string GetFieldTypeName()

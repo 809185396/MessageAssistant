@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MessageAssistant.Util;
@@ -15,7 +16,7 @@ namespace MessageAssistant
         [STAThread]
         static void Main()
         {
-            // Test2();
+            Test3();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainFrm());
@@ -49,6 +50,27 @@ namespace MessageAssistant
             paths = paths.Skip(1).ToArray();
             paths = paths.Skip(1).ToArray();
             paths = paths.Skip(1).ToArray();
+        }
+
+        static void Test3()
+        {
+            string line = "ADDR=1234;NAME=ZHANG;PHONE=6789";
+            Regex reg1 = new Regex("NAMEk=(.+);");
+            Match m2 = reg1.Match(line);
+            Console.WriteLine(m2.Value);
+            String expr = "${ab_}>${bc}+1";
+            // String expr = "1ifds93+";
+            Regex reg = new Regex(@"\$\{(\w+)\}");
+            var m1 = reg.Match(expr);
+            Console.WriteLine(m1.Value);
+            var matches = reg.Matches(expr);
+            for (int i = 0; i < matches.Count; ++i)
+            {
+                var match = matches[i];
+                Console.WriteLine(match.Groups[0].Value + " -- " + match.Groups[1].Value);
+                match.Result("yes");
+            }
+            Console.WriteLine(expr);
         }
     }
 }
