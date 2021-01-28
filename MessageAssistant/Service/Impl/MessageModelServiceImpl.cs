@@ -15,7 +15,22 @@ namespace MessageAssistant.Service.Impl
     {
         public MessageModel Read(string file)
         {
-            throw new NotImplementedException();
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(file);
+                var xn = doc.SelectSingleNode(MessageXmlConst.MESSAGE);
+                var strDir = System.IO.Path.GetDirectoryName(file);
+                if (xn != null)
+                {
+                    return Read(strDir, (XmlElement)xn);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return null;          
         }
 
         public void Write(MessageModel model, string file)
@@ -23,7 +38,7 @@ namespace MessageAssistant.Service.Impl
             throw new NotImplementedException();
         }
 
-        private MessageModel Read(XmlElement e)
+        private MessageModel Read(String strDir, XmlElement e)
         {
             MessageModel model = new MessageModel();
             String strEle = e.OuterXml;
@@ -43,7 +58,7 @@ namespace MessageAssistant.Service.Impl
             }
                     
             model.Cmd = e.GetAttributeInt(MessageXmlConst.CMD);
-            model.Fields.AddRange(FieldModelServiceBase.ReadChildren(e));            
+            model.Fields.AddRange(FieldModelServiceBase.ReadChildren(strDir, e));            
             return model;
         }
 

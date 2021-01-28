@@ -7,6 +7,7 @@ using MessageAssistant.Constant;
 using MessageAssistant.Model;
 using MessageAssistant.Util;
 using MessageAssistant.Service.Impl.FieldModelService;
+using System.Xml;
 
 namespace MessageAssistant.Service.Impl
 {
@@ -36,5 +37,26 @@ namespace MessageAssistant.Service.Impl
             });
             return model; 
         }
+
+        private void LoadRefFile(String file)
+        {
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.Load(file);
+                var xn = doc.SelectSingleNode(MessageXmlConst.FILE_BLOCK);
+                var strDir = System.IO.Path.GetDirectoryName(file);
+                if (xn != null)
+                {
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+
     }
 }

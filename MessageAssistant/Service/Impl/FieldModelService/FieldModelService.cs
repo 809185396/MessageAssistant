@@ -98,7 +98,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             fieldModel.Value = val.ToString();
         }
 
-        protected override FieldModelBase _Read(XmlElement e)
+        protected override FieldModelBase _Read(String strDir, XmlElement e)
         {
             FieldModel model = new FieldModel();
             base._Read(e, model);

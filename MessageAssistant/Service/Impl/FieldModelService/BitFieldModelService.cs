@@ -29,12 +29,12 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             }
         }
 
-        protected override FieldModelBase _Read(XmlElement e)
+        protected override FieldModelBase _Read(String strDir, XmlElement e)
         {
             BitFieldModel model = new BitFieldModel();
             _Read(e, model);
             model.Length = e.GetAttributeInt(MessageXmlConst.LENGTH);
-            var children = ReadChildren(e);
+            var children = ReadChildren(strDir, e);
             for(int i = 0; i < children.Count; ++i)
             {
                 if(children[i] is BitChildModel)

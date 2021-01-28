@@ -13,12 +13,12 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 {
     abstract class FieldModelServiceBase
     {
-        public static FieldModelBase Read(XmlElement e)
+        public static FieldModelBase Read(String strDir, XmlElement e)
         {
             FieldModelServiceBase srv = _getFieldModelBaseService(e.Name);
             if(srv != null)
             {
-                return srv._Read(e);
+                return srv._Read(strDir, e);
             }
             return null;
         }
@@ -32,7 +32,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             }
         }
 
-        protected abstract FieldModelBase _Read(XmlElement e);
+        protected abstract FieldModelBase _Read(String strDir, XmlElement e);
 
         protected abstract void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf);
 
@@ -49,18 +49,18 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             return;
         }        
  
-        public static List<FieldModelBase> ReadChildren(XmlElement e)
+        public static List<FieldModelBase> ReadChildren(String strDir, XmlElement e)
         {
             List<FieldModelBase> childrenList = new List<FieldModelBase>();
             var children = e.ChildNodes;
             for (int i = 0; i < children.Count; ++i)
             {
                 var child = children[i] as XmlElement;
-                if (child != null)
+                if (child == null)
                 {
-                    childrenList.Add(Read(child));
+                    continue;
                 }
-                var field = Read(child);
+                var field = Read(strDir,child);
                 if(field != null)
                 {
                     childrenList.Add(field);

@@ -16,7 +16,7 @@ namespace MessageAssistant
         [STAThread]
         static void Main()
         {
-            Test3();
+            // Test3();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainFrm());

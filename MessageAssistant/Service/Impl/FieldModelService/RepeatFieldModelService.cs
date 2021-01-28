@@ -28,12 +28,12 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             }
         }
 
-        protected override FieldModelBase _Read(XmlElement e)
+        protected override FieldModelBase _Read(String strDir, XmlElement e)
         {
             RepeatFieldModel model = new RepeatFieldModel();
             _Read(e, model);
             model.Expression = e.GetAttributeEx(MessageXmlConst.EXPRESSION);
-            model.Children.AddRange(ReadChildren(e));
+            model.Children.AddRange(ReadChildren(strDir, e));
             return model;
         }
     }

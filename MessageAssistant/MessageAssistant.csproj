@@ -71,6 +71,7 @@
     <Compile Include="Service\Impl\FieldModelService\BitChildModelService.cs" />
     <Compile Include="Service\Impl\FieldModelService\BitFieldModelService.cs" />
     <Compile Include="Service\Impl\FieldModelService\FieldModelService.cs" />
+    <Compile Include="Service\Impl\FieldModelService\FileFieldModelService.cs" />
     <Compile Include="Service\Impl\FieldModelService\IfFieldModelService.cs" />
     <Compile Include="Service\Impl\FieldModelService\RepeatFieldModelService.cs" />
     <Compile Include="Service\Impl\MessageModelServiceImpl.cs" />

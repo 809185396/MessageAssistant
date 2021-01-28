@@ -58,7 +58,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             child.Value = val.ToString();
         }
 
-        protected override FieldModelBase _Read(XmlElement e)
+        protected override FieldModelBase _Read(String strDir, XmlElement e)
         {
             BitChildModel model = new BitChildModel();
             _Read(e, model);
