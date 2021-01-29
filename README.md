@@ -33,14 +33,14 @@ MessageAssistan是一个报文消息工具
 ## XML文件中的元素类型
 本软件中用XML文件来描述报文的格式
 
-### <message>表示消息体元素，它必须是根节点
+### 表示消息体元素<message>，它必须是根节点
 属性
 * name，描述报文名称，必备
 * description，报文备注，可选
 * endian，报文大小端格式，必备，可有的值：[big|little]
 * cmd, 命令码，必备，整数
 
-### <field>表示长度单位为字节的实际字段域
+### 表示长度单位为字节的实际字段域<field>
 属性
 * name，描述报文名称，必备
 * description，报文备注，可选
@@ -51,7 +51,7 @@ MessageAssistan是一个报文消息工具
 * offset, 偏移，可选，解析报文时值会减去该值，组装报文时会加上该值
 * skip, 跳过该字段不做解析，可选, 可选的值[true|false],默认是false
 
-### <bit-child>长度单位为位的实际字段域
+### 长度单位为位的实际字段域<bit-child>
 属性
 * name，描述报文名称，必备
 * description，报文备注，可选
@@ -62,25 +62,25 @@ MessageAssistan是一个报文消息工具
 * offset, 偏移，可选，解析报文时值会减去该值，组装报文时会加上该值
 * skip, 跳过该字段不做解析，可选, 可选的值[true|false],默认是false
 
-### <if-field>表示条件字段域
+### 表示条件字段域<if-field>
 属性
 * name，描述报文名称，必备
 * description，报文备注，可选
 * expr，表达式，必备，表达返回值必须是布尔值
 
-### <repeat-field>表示循环字段域
+### 表示循环字段域<repeat-field>
 属性
 * name，描述报文名称，必备
 * description，报文备注，可选
 * expr，表达式，必备，表达返回值必须是整数
 
-### <bit-field>表示组合字段域
+### 表示组合字段域<bit-field>
 属性
 * name，描述报文名称，必备
 * description，报文备注，可选
 * length, 字段长度，必备，整数
 
-### <file-field>表示引用外部文件字段域
+### 表示引用外部文件字段域<file-field>
 属性
 * name，描述报文名称，必备
 * description，报文备注，可选
