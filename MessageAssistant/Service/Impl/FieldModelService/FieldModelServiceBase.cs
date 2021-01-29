@@ -43,9 +43,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             Assert.NotNullOrEmpty(str, strEle + " 名称不可以为空");
             model.Name = str;
 
-            model.Description = e.GetAttributeEx(MessageXmlConst.DESCRIPTION, "");
-            str = e.GetAttributeEx(MessageXmlConst.ENDIAN, null);
-            model.Endian = str;
+            model.Description = e.GetAttributeEx(MessageXmlConst.DESCRIPTION, "");            
             return;
         }        
  

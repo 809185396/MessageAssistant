@@ -102,6 +102,8 @@ namespace MessageAssistant.Service.Impl.FieldModelService
         {
             FieldModel model = new FieldModel();
             base._Read(e, model);
+            String str = e.GetAttributeEx(MessageXmlConst.ENDIAN, null);
+            model.Endian = str;
             model.Length = e.GetAttributeInt(MessageXmlConst.LENGTH);
             model.Type = e.GetAttributeEx(MessageXmlConst.TYPE);
             model.Rate = e.GetAttributeDouble(MessageXmlConst.RATE, 1);

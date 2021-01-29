@@ -124,7 +124,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MessageFile\V1\cmd_1.xml">
+    <Content Include="message-cfg\V1\cmd_1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

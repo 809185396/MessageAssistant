@@ -9,6 +9,7 @@ namespace MessageAssistant.Model
 {
     class BitChildModel: FieldModelBase
     {
+        public String Endian { get; set; }
         public int Length { get; set; }
         public String Type { get; set; }
         public double Rate { get; set; } = 1.0;

@@ -30,7 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbMessage = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbProtocol = new System.Windows.Forms.ComboBox();
             this.btnDecompose = new System.Windows.Forms.Button();
@@ -77,21 +77,21 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.tbMessage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 85);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(719, 115);
             this.panel2.TabIndex = 1;
             // 
-            // textBox1
+            // tbMessage
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(719, 115);
-            this.textBox1.TabIndex = 0;
+            this.tbMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbMessage.Location = new System.Drawing.Point(0, 0);
+            this.tbMessage.Multiline = true;
+            this.tbMessage.Name = "tbMessage";
+            this.tbMessage.Size = new System.Drawing.Size(719, 115);
+            this.tbMessage.TabIndex = 0;
             // 
             // panel1
             // 
@@ -203,6 +203,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "报文分解&组装";
+            this.Load += new System.EventHandler(this.MessageDetailFrm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -224,7 +225,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbMessage;
         private System.Windows.Forms.Button btnDecompose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;

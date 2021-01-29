@@ -12,8 +12,7 @@ namespace MessageAssistant.Model
     abstract class FieldModelBase
     {
         public String Name { get; set; } = "";
-        public String Description { get; set; } = "";
-        public String Endian { get; set; }
+        public String Description { get; set; } = "";        
         public abstract int GetLength();
         public abstract String GetFieldTypeName();
         public abstract FieldModelBase GetFieldModelBase(String[] paths);
