@@ -76,6 +76,45 @@ namespace MessageAssistant.Views
 
         private void btnCompose_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void BindMessageModel(MessageModel model)
+        {
+            dataGridView1.Rows.Clear();
+            foreach (var child in model.Fields)
+            {
+                AddField(model, child);
+            }
+        }
+
+        private void AddField(MessageModel model,FieldModelBase field)
+        {
+            throw new NotImplementedException("");
+        }
+
+        private void AddField(MessageModel model, BitFieldModel field)
+        {
+
+        }
+
+        private void AddField(MessageModel model, FieldModel field)
+        {
+            dataGridView1.Rows.Add();
+        }
+
+        private void AddField(MessageModel model, IfFieldModel field)
+        {
+
+        }
+
+        private void AddField(MessageModel model, RepeatFieldModel field)
+        {
+
+        }
+
+        private void AddField(FileFieldModel field)
+        {
 
         }
     }
