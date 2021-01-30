@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MessageAssistant.Util;
 
 namespace MessageAssistant.Model
 {
+    [Serializable]
     class FileFieldModel : FieldModelBase
     {
         public String FileName { get; set; }
@@ -35,6 +37,11 @@ namespace MessageAssistant.Model
                 throw new ArgumentException("");
             }
             return field.GetFieldModelBase(paths.Skip(1).ToArray());
+        }
+
+        public override Object Clone()
+        {
+            return ObjectUtil.Copy<FileFieldModel>(this);
         }
     }
 }

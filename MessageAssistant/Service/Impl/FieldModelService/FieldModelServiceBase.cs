@@ -105,9 +105,9 @@ namespace MessageAssistant.Service.Impl.FieldModelService
                 {
                     strValue = ((FieldModel)field).Value;
                 }
-                else if (field is BitChildModel)
+                else if (field is BitFieldModel)
                 {
-                    strValue = ((BitChildModel)field).Value;
+                    strValue = ((BitFieldModel)field).Value;
                 }
                 if (String.IsNullOrEmpty(strValue))
                 {

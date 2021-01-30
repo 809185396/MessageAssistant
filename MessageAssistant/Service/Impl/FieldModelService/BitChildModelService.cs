@@ -63,7 +63,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             BitChildModel model = new BitChildModel();
             _Read(e, model);
             model.Length = e.GetAttributeInt(MessageXmlConst.LENGTH);
-            model.Type = e.GetAttributeEx(MessageXmlConst.TYPE);
+            model.Type= e.GetAttributeEx(MessageXmlConst.TYPE);
             model.Rate = e.GetAttributeDouble(MessageXmlConst.RATE, 1);
             model.Offset = e.GetAttributeDouble(MessageXmlConst.OFFSET, 0);
             model.Skip = e.GetAttributeEx(MessageXmlConst.SKIP, MessageXmlConst.SKIP_FALSE);

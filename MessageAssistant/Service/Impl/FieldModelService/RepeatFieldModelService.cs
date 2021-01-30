@@ -3,6 +3,7 @@ using System.Xml;
 using MessageAssistant.Model;
 using MessageAssistant.Util;
 using MessageAssistant.Constant;
+using System.Collections.Generic;
 
 namespace MessageAssistant.Service.Impl.FieldModelService
 {
@@ -19,10 +20,23 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             {
                 // TODO: 表达式错误
             }
+            List<FieldModelBase> next = null;
+            List<FieldModelBase> cur = null;
             for (int i = 0; i < result; ++i)
             {
-                foreach (var child in f.Children)
+                next = null;
+                cur = f.Children[i];
+                if(i < result - 1 && f.Children.Count == i)
                 {
+                    next = new List<FieldModelBase>();
+                    f.Children.Add(next);                  
+                }
+                foreach (var child in cur)
+                {
+                    if(next != null)
+                    {
+                        next.Add((FieldModelBase)child.Clone());
+                    }
                     Decomposite(model, child, buf);
                 }
             }
@@ -33,7 +47,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             RepeatFieldModel model = new RepeatFieldModel();
             _Read(e, model);
             model.Expression = e.GetAttributeEx(MessageXmlConst.EXPRESSION);
-            model.Children.AddRange(ReadChildren(strDir, e));
+            model.Children[0].AddRange(ReadChildren(strDir, e));
             return model;
         }
     }

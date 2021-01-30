@@ -84,6 +84,7 @@
     <Compile Include="Util\EnumDescriptionConverter.cs" />
     <Compile Include="Util\ExpressionUtil.cs" />
     <Compile Include="Util\ExtendFunction.cs" />
+    <Compile Include="Util\ObjectUtil.cs" />
     <Compile Include="Util\StringConverter.cs" />
     <Compile Include="Util\WrapMessageBox.cs" />
     <Compile Include="Views\MessageDetailFrm.cs">

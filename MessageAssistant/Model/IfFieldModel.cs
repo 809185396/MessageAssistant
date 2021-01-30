@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using MessageAssistant.Constant;
+using MessageAssistant.Util;
 
 namespace MessageAssistant.Model
 {
+    [Serializable]
     class IfFieldModel : FieldModelBase
     {
         public String Expression { get; set; }
@@ -32,6 +34,11 @@ namespace MessageAssistant.Model
                 throw new ArgumentException("");
             }
             return field.GetFieldModelBase(paths.Skip(1).ToArray());
+        }
+
+        public override Object Clone()
+        {
+            return ObjectUtil.Copy<IfFieldModel>(this);
         }
     }
 }

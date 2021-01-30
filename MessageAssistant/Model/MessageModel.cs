@@ -8,6 +8,7 @@ using MessageAssistant.Util;
 
 namespace MessageAssistant.Model
 {
+    [Serializable]
     class MessageModel
     {
         public String Name { get; set; } = "";
@@ -19,7 +20,7 @@ namespace MessageAssistant.Model
         public FieldModelBase GetFieldModelBase(String path)
         {
             Assert.NotNullOrEmpty(path, "");
-            String[] paths = path.Split('.');
+            String[] paths = path.Split(new char[] { '.', '[', ']' });
             FieldModelBase field = Fields.First(r => r.Name == paths[0]);
             if(field == null)
             {

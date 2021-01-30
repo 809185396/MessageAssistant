@@ -66,6 +66,7 @@ namespace MessageAssistant.Views
                 byte[] btMsg = MessageAssistant.Util.StringConverter.hexStrToToByte(strMsg2);
                 MessageService service = new MessageService();
                 model = service.Decomposite(model, btMsg);
+                this.dataGridView1.Rows.Clear();
             }
             catch (Exception ex)
             {

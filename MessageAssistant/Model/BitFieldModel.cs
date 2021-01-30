@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MessageAssistant.Util;
 
 namespace MessageAssistant.Model
 {
-    class BitFieldModel : FieldModelBase
+    [Serializable]
+    class BitFieldModel : FieldModel
     {
         public int Length { get; set; }
 
@@ -35,6 +37,11 @@ namespace MessageAssistant.Model
             return field.GetFieldModelBase(paths.Skip(1).ToArray());
         }
 
-        public List<BitChildModel> Children { get; private set; } = new List<BitChildModel>();
+        public List<BitFieldModel> Children { get; private set; } = new List<BitFieldModel>();
+
+        public override Object Clone()
+        {
+            return ObjectUtil.Copy<BitFieldModel>(this);
+        }
     }
 }

@@ -41,6 +41,12 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCompose = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDefaultValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -156,6 +162,13 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colName,
+            this.colType,
+            this.colDescription,
+            this.colHex,
+            this.colDefaultValue,
+            this.colValue});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -192,6 +205,36 @@
             this.label2.Size = new System.Drawing.Size(35, 12);
             this.label2.TabIndex = 0;
             this.label2.Text = "含义:";
+            // 
+            // colName
+            // 
+            this.colName.HeaderText = "名称";
+            this.colName.Name = "colName";
+            // 
+            // colType
+            // 
+            this.colType.HeaderText = "数据类型";
+            this.colType.Name = "colType";
+            // 
+            // colDescription
+            // 
+            this.colDescription.HeaderText = "备注";
+            this.colDescription.Name = "colDescription";
+            // 
+            // colHex
+            // 
+            this.colHex.HeaderText = "原始字节";
+            this.colHex.Name = "colHex";
+            // 
+            // colDefaultValue
+            // 
+            this.colDefaultValue.HeaderText = "缺省值";
+            this.colDefaultValue.Name = "colDefaultValue";
+            // 
+            // colValue
+            // 
+            this.colValue.HeaderText = "值";
+            this.colValue.Name = "colValue";
             // 
             // MessageDetailFrm
             // 
@@ -235,5 +278,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbProtocol;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDefaultValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colValue;
     }
 }

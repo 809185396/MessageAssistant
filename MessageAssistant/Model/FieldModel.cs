@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MessageAssistant.Util;
 
 namespace MessageAssistant.Model
 {
+    [Serializable]
     /// <summary>
     /// 消息中具体字段元素
     /// </summary>
@@ -40,6 +42,11 @@ namespace MessageAssistant.Model
                 throw new ArgumentException("");
             }
             return this;
+        }
+
+        public override Object Clone()
+        {
+            return ObjectUtil.Copy<FieldModel>(this);
         }
     }
 }

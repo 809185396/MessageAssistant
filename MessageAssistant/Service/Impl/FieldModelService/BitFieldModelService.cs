@@ -37,9 +37,9 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             var children = ReadChildren(strDir, e);
             for(int i = 0; i < children.Count; ++i)
             {
-                if(children[i] is BitChildModel)
+                if(children[i] is BitFieldModel)
                 {
-                    model.Children.Add(children[i] as BitChildModel);
+                    model.Children.Add(children[i] as BitFieldModel);
                 }
                 else
                 {
