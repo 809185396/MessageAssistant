@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using MessageAssistant.Constant;
+using MessageAssistant.Exceptions;
 using MessageAssistant.Model;
 using MessageAssistant.Util;
 
@@ -38,6 +39,10 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             _Read(e, model);
             model.Expression = e.GetAttributeEx(MessageXmlConst.EXPRESSION);
             model.Children.AddRange(ReadChildren(strDir, e));
+            if(null != model.Children.FirstOrDefault(r=>r is BitChildModel))
+            {
+                throw new BizException("if-field元素不能包含bit-child元素");
+            }
             return model;
         }
     }

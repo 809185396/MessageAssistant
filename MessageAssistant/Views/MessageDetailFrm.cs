@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MessageAssistant.Model;
 using MessageAssistant.Service;
@@ -25,13 +19,18 @@ namespace MessageAssistant.Views
 
         private void MessageDetailFrm_Load(object sender, EventArgs e)
         {
+            RefreshProtocol();
+        }
+
+        private void RefreshProtocol()
+        {
             String str = Application.StartupPath;
             str = str.TrimEnd(new char[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar });
             str = str + Path.DirectorySeparatorChar + "message-cfg";
             var files = Directory.GetFiles(str, "*.xml");
             xmlFiles.Clear();
             xmlFiles.AddRange(files);
-            foreach(var file in files)
+            foreach (var file in files)
             {
                 ComboBoxItem cbi = new ComboBoxItem();
                 cbi = new ComboBoxItem();
@@ -50,13 +49,13 @@ namespace MessageAssistant.Views
                 return;
             }
 
-            var obj = cmbProtocol.SelectedValue;
+            var obj = cmbProtocol.SelectedItem;
             if(obj == null)
             {
                 WrapMessageBox.Info("请选择消息配置文件");
                 return;
             }
-            String strFile = obj.ToString();
+            String strFile = (obj as ComboBoxItem).Value;
 
             try
             {
@@ -66,7 +65,8 @@ namespace MessageAssistant.Views
                 byte[] btMsg = MessageAssistant.Util.StringConverter.hexStrToToByte(strMsg2);
                 MessageService service = new MessageService();
                 model = service.Decomposite(model, btMsg);
-                this.dataGridView1.Rows.Clear();
+                dataGridView1.Rows.Clear();
+
             }
             catch (Exception ex)
             {
@@ -138,7 +138,7 @@ namespace MessageAssistant.Views
         }
         public override String ToString()
         {
-            return this.Value;
+            return this.Text;
         }
 
     }

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MessageAssistant.Model;
 using System.Xml;
 using MessageAssistant.Constant;
 using MessageAssistant.Util;
 using MessageAssistant.Service.Impl.FieldModelService;
+using MessageAssistant.Exceptions;
 
 namespace MessageAssistant.Service.Impl
 {
@@ -25,12 +22,16 @@ namespace MessageAssistant.Service.Impl
                 {
                     return Read(strDir, (XmlElement)xn);
                 }
+                throw new BizException($"{file} 没有消息根节点");
+            }
+            catch(BizException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                throw new BizException($"读取{file} 文件失败", ex);
             }
-            return null;          
         }
 
         public void Write(MessageModel model, string file)
@@ -60,13 +61,6 @@ namespace MessageAssistant.Service.Impl
             model.Cmd = e.GetAttributeInt(MessageXmlConst.CMD);
             model.Fields.AddRange(FieldModelServiceBase.ReadChildren(strDir, e));            
             return model;
-        }
-
-        public String GetFieldValue(MessageModel model, String name)
-        {
-            String[] path = name.Split('.');
-
-            return String.Empty;
         }       
     }
 }

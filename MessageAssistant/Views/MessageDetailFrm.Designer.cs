@@ -77,7 +77,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.panel3);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Size = new System.Drawing.Size(719, 570);
+            this.splitContainer1.Size = new System.Drawing.Size(868, 570);
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -87,7 +87,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 85);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(719, 115);
+            this.panel2.Size = new System.Drawing.Size(868, 115);
             this.panel2.TabIndex = 1;
             // 
             // tbMessage
@@ -96,7 +96,7 @@
             this.tbMessage.Location = new System.Drawing.Point(0, 0);
             this.tbMessage.Multiline = true;
             this.tbMessage.Name = "tbMessage";
-            this.tbMessage.Size = new System.Drawing.Size(719, 115);
+            this.tbMessage.Size = new System.Drawing.Size(868, 115);
             this.tbMessage.TabIndex = 0;
             // 
             // panel1
@@ -108,21 +108,23 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(719, 85);
+            this.panel1.Size = new System.Drawing.Size(868, 85);
             this.panel1.TabIndex = 0;
             // 
             // cmbProtocol
             // 
+            this.cmbProtocol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProtocol.FormattingEnabled = true;
             this.cmbProtocol.Location = new System.Drawing.Point(47, 21);
             this.cmbProtocol.Name = "cmbProtocol";
-            this.cmbProtocol.Size = new System.Drawing.Size(662, 20);
+            this.cmbProtocol.Size = new System.Drawing.Size(811, 20);
             this.cmbProtocol.TabIndex = 2;
             // 
             // btnDecompose
             // 
             this.btnDecompose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDecompose.Location = new System.Drawing.Point(634, 57);
+            this.btnDecompose.Location = new System.Drawing.Point(783, 57);
             this.btnDecompose.Name = "btnDecompose";
             this.btnDecompose.Size = new System.Drawing.Size(75, 23);
             this.btnDecompose.TabIndex = 1;
@@ -154,7 +156,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 60);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(719, 306);
+            this.panel4.Size = new System.Drawing.Size(868, 306);
             this.panel4.TabIndex = 1;
             // 
             // dataGridView1
@@ -173,7 +175,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(719, 306);
+            this.dataGridView1.Size = new System.Drawing.Size(868, 306);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel3
@@ -183,13 +185,13 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(719, 60);
+            this.panel3.Size = new System.Drawing.Size(868, 60);
             this.panel3.TabIndex = 0;
             // 
             // btnCompose
             // 
             this.btnCompose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCompose.Location = new System.Drawing.Point(634, 28);
+            this.btnCompose.Location = new System.Drawing.Point(783, 28);
             this.btnCompose.Name = "btnCompose";
             this.btnCompose.Size = new System.Drawing.Size(75, 23);
             this.btnCompose.TabIndex = 1;
@@ -210,6 +212,7 @@
             // 
             this.colName.HeaderText = "名称";
             this.colName.Name = "colName";
+            this.colName.Width = 150;
             // 
             // colType
             // 
@@ -218,6 +221,7 @@
             // 
             // colDescription
             // 
+            this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colDescription.HeaderText = "备注";
             this.colDescription.Name = "colDescription";
             // 
@@ -225,22 +229,25 @@
             // 
             this.colHex.HeaderText = "原始字节";
             this.colHex.Name = "colHex";
+            this.colHex.Width = 160;
             // 
             // colDefaultValue
             // 
             this.colDefaultValue.HeaderText = "缺省值";
             this.colDefaultValue.Name = "colDefaultValue";
+            this.colDefaultValue.Width = 160;
             // 
             // colValue
             // 
             this.colValue.HeaderText = "值";
             this.colValue.Name = "colValue";
+            this.colValue.Width = 160;
             // 
             // MessageDetailFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 570);
+            this.ClientSize = new System.Drawing.Size(868, 570);
             this.Controls.Add(this.splitContainer1);
             this.Name = "MessageDetailFrm";
             this.ShowIcon = false;

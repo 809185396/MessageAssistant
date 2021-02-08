@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using MessageAssistant.Exceptions;
 
 namespace MessageAssistant.Util
 {
@@ -14,7 +15,7 @@ namespace MessageAssistant.Util
             String str = e.GetAttribute(name);
             if (String.IsNullOrEmpty(str))
             {
-                throw new ArgumentException($"{e.OuterXml} does not has attribute {name}");
+                throw new BizException($"{e.OuterXml} does not has attribute {name}");
             }
             return str.Trim().ToLower();
         }
@@ -34,7 +35,7 @@ namespace MessageAssistant.Util
             String str = e.GetAttribute(name);
             if (String.IsNullOrEmpty(str))
             {
-                throw new ArgumentException($"{e.OuterXml} does not has attribute {name}");
+                throw new BizException($"{e.OuterXml} does not has attribute {name}");
             }
             int baseIndex = str.ToLower().Trim().StartsWith("0x") ? 16 : 10;
             return Convert.ToInt32(str, baseIndex);
@@ -56,7 +57,7 @@ namespace MessageAssistant.Util
             String str = e.GetAttribute(name);
             if (String.IsNullOrEmpty(str))
             {
-                throw new ArgumentException($"{e.OuterXml} does not has attribute {name}");
+                throw new BizException($"{e.OuterXml} does not has attribute {name}");
             }
             return Convert.ToDouble(str);
         }

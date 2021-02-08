@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<message endian="big" cmd="0x1" name="1号报文" description="">
+  <field name="header-id" description="头部标识" default="0xfe" type="byte" length="1"></field>
+  <if-field name ="if1" expr="true">
+    <field name="if1-1" description="if1-1 descr" default="0xfe" type="short" length="2"></field>
+  </if-field>
+  <if-field name="if2" expr="true">
+    <field name="if2-1" description="if2-1 descr" default="0xfe" type="byte" length="1"></field>
+    <field name="if2-2" description="if2-2 descr" default="0xfe" type="byte" length="1"></field>
+  </if-field>
+  <repeat-field name="rep1" expr="2">
+    <field name="repeat1" description="repeat1 descr" default="0xfe" type="short" length="2"></field>
+    <field name="repeat2" description="repeat1 descr" default="0xfe" type="short" length="2"></field>
+  </repeat-field>
+  <bit-field name="composite1" length="7">
+    <bit-child name="composite1-1" description="composite1-1 descr" default="0xfe" type="short" length="4"/>
+    <bit-child name="composite1-2" description="composite1-2 descr" default="0xfe" type="short" length="12"/>
+  </bit-field>
+</message>

@@ -9,7 +9,7 @@ using MessageAssistant.Util;
 namespace MessageAssistant.Model
 {
     [Serializable]
-    class BitFieldModel : FieldModel
+    class BitFieldModel : FieldModelBase
     {
         public int Length { get; set; }
 
@@ -37,7 +37,7 @@ namespace MessageAssistant.Model
             return field.GetFieldModelBase(paths.Skip(1).ToArray());
         }
 
-        public List<BitFieldModel> Children { get; private set; } = new List<BitFieldModel>();
+        public List<BitChildModel> Children { get; private set; } = new List<BitChildModel>();
 
         public override Object Clone()
         {

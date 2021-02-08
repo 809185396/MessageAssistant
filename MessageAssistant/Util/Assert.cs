@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MessageAssistant.Exceptions;
 
 namespace MessageAssistant.Util
 {
@@ -12,21 +13,21 @@ namespace MessageAssistant.Util
         {
             if (param == null)
             {
-                throw new ArgumentNullException(tip);
+                throw new BizException(tip);
             }
         }
         public static void NotNullOrEmpty(string param, string tip)
         {
             if (param == null || param == string.Empty)
             {
-                throw new ArgumentException(tip);
+                throw new BizException(tip);
             }
         }
         public static void NotNullOrEmpty<T>(IEnumerable<T> param, string tip)
         {
             if (param == null || param.Count() == 0)
             {
-                throw new ArgumentException(tip);
+                throw new BizException(tip);
             }
         }
     }

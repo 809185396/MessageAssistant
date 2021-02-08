@@ -3,9 +3,6 @@ using MessageAssistant.Model;
 using MessageAssistant.Util;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Text.RegularExpressions;
 
@@ -39,7 +36,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
         protected void _Read(XmlElement e, FieldModelBase model)
         {
             String strEle = e.OuterXml;
-            String str = e.GetAttributeEx(MessageXmlConst.FIELD);
+            String str = e.GetAttributeEx(MessageXmlConst.NAME);
             Assert.NotNullOrEmpty(str, strEle + " 名称不可以为空");
             model.Name = str;
 
@@ -84,6 +81,8 @@ namespace MessageAssistant.Service.Impl.FieldModelService
                     return new RepeatFieldModelService();
                 case MessageXmlConst.BIT_FIELD:
                     return new BitFieldModelService();
+                case MessageXmlConst.BIT_CHILD:
+                    return new BitChildModelService();
                 default:
                     return null;
             }
@@ -91,7 +90,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 
         public static string PreProcessExpression(MessageModel model, String expression)
         {
-            Regex reg = new Regex(@"\$\{(\w+)\}");
+            Regex reg = new Regex(@"\$\{\s*(\w+)\s*\}");
             int loc = 0;
             Match m = reg.Match(expression, loc);
             while (m.Success)
@@ -107,7 +106,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
                 }
                 else if (field is BitFieldModel)
                 {
-                    strValue = ((BitFieldModel)field).Value;
+                    strValue = ((BitChildModel)field).Value;
                 }
                 if (String.IsNullOrEmpty(strValue))
                 {

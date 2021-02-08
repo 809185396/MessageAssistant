@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Xml;
 using MessageAssistant.Model;
 using MessageAssistant.Util;
 using MessageAssistant.Constant;
 using System.Collections.Generic;
+using MessageAssistant.Exceptions;
 
 namespace MessageAssistant.Service.Impl.FieldModelService
 {
@@ -48,6 +50,10 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             _Read(e, model);
             model.Expression = e.GetAttributeEx(MessageXmlConst.EXPRESSION);
             model.Children[0].AddRange(ReadChildren(strDir, e));
+            if (null != model.Children[0].FirstOrDefault(r => r is BitChildModel))
+            {
+                throw new BizException("repeat-field元素不能包含bit-child元素");
+            }
             return model;
         }
     }
