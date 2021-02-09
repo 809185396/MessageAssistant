@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<file-block>
+  <field name="milli second" description="毫秒" default="0x00" type="ushort" length="2"></field>
+  <field name="minute" description="分钟" default="0x00" type="byte" length="1"></field>
+  <field name="hour" description="小时" default="0x00" type="byte" length="1"></field>
+  <field name="day" description="日" default="0x00" type="byte" length="1"></field>
+  <field name="month" description="月" default="0x00" type="byte" length="1"></field>
+  <field name="year" description="年" default="0x00" type="byte" length="1" offset="-2000"></field>
+</file-block>

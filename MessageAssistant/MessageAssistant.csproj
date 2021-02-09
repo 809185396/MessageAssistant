@@ -88,6 +88,12 @@
     <Compile Include="Util\ObjectUtil.cs" />
     <Compile Include="Util\StringConverter.cs" />
     <Compile Include="Util\WrapMessageBox.cs" />
+    <Compile Include="Views\AboutFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AboutFrm.Designer.cs">
+      <DependentUpon>AboutFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MessageDetailFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\AboutFrm.resx">
+      <DependentUpon>AboutFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MessageDetailFrm.resx">
       <DependentUpon>MessageDetailFrm.cs</DependentUpon>
     </EmbeddedResource>

@@ -39,7 +39,10 @@ namespace MessageAssistant
 
         private void tsmiQuit_Click(object sender, EventArgs e)
         {
-
+            if(MessageBox.Show("您确定要退出吗?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Application.Exit();
+            }            
         }
 
         private void menuStrip1_ItemAdded(object sender, ToolStripItemEventArgs e)
@@ -51,6 +54,17 @@ namespace MessageAssistant
             {
                 e.Item.Visible = false;
             }
+        }
+
+        private void tsmiHelpAbout_Click(object sender, EventArgs e)
+        {
+            AboutFrm frm = new AboutFrm();
+            frm.ShowDialog();
+        }
+
+        private void tsmiHelpContent_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/809185396/MessageAssistant");
         }
     }
 }

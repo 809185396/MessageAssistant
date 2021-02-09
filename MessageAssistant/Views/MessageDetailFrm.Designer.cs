@@ -239,7 +239,7 @@
             this.Name = "MessageDetailFrm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "报文分解&组装";
+            this.Text = "报文分解";
             this.Load += new System.EventHandler(this.MessageDetailFrm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

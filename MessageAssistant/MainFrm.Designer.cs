@@ -31,16 +31,19 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDecompse = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCompose = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiHelpContent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.tsmiHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(696, 25);
@@ -52,7 +55,6 @@
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiDecompse,
-            this.tsmiCompose,
             this.toolStripMenuItem2,
             this.tsmiQuit});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -62,28 +64,44 @@
             // tsmiDecompse
             // 
             this.tsmiDecompse.Name = "tsmiDecompse";
-            this.tsmiDecompse.Size = new System.Drawing.Size(118, 22);
+            this.tsmiDecompse.Size = new System.Drawing.Size(152, 22);
             this.tsmiDecompse.Text = "分解";
             this.tsmiDecompse.Click += new System.EventHandler(this.tsmiDecompse_Click);
-            // 
-            // tsmiCompose
-            // 
-            this.tsmiCompose.Name = "tsmiCompose";
-            this.tsmiCompose.Size = new System.Drawing.Size(118, 22);
-            this.tsmiCompose.Text = "组装";
-            this.tsmiCompose.Click += new System.EventHandler(this.tsmiCompose_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(115, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
             // 
             // tsmiQuit
             // 
             this.tsmiQuit.Name = "tsmiQuit";
-            this.tsmiQuit.Size = new System.Drawing.Size(118, 22);
+            this.tsmiQuit.Size = new System.Drawing.Size(152, 22);
             this.tsmiQuit.Text = "退出(&Q)";
             this.tsmiQuit.Click += new System.EventHandler(this.tsmiQuit_Click);
+            // 
+            // tsmiHelp
+            // 
+            this.tsmiHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiHelpContent,
+            this.tsmiHelpAbout});
+            this.tsmiHelp.Name = "tsmiHelp";
+            this.tsmiHelp.Size = new System.Drawing.Size(61, 21);
+            this.tsmiHelp.Text = "帮助(&H)";
+            // 
+            // tsmiHelpAbout
+            // 
+            this.tsmiHelpAbout.Name = "tsmiHelpAbout";
+            this.tsmiHelpAbout.Size = new System.Drawing.Size(152, 22);
+            this.tsmiHelpAbout.Text = "关于(&A)";
+            this.tsmiHelpAbout.Click += new System.EventHandler(this.tsmiHelpAbout_Click);
+            // 
+            // tsmiHelpContent
+            // 
+            this.tsmiHelpContent.Name = "tsmiHelpContent";
+            this.tsmiHelpContent.Size = new System.Drawing.Size(152, 22);
+            this.tsmiHelpContent.Text = "查看帮助(&V)";
+            this.tsmiHelpContent.Click += new System.EventHandler(this.tsmiHelpContent_Click);
             // 
             // MainFrm
             // 
@@ -108,9 +126,11 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tsmiDecompse;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCompose;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem tsmiQuit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHelpAbout;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHelpContent;
     }
 }
 

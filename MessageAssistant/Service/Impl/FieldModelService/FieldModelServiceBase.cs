@@ -102,7 +102,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 
         public static string PreProcessExpression(MessageModel model, String expression)
         {
-            Regex reg = new Regex(@"\$\{\s*(\w+)\s*\}");
+            Regex reg = new Regex(@"\$\{\s*([\w|\-|.]+)\s*\}");
             int loc = 0;
             Match m = reg.Match(expression, loc);
             while (m.Success)

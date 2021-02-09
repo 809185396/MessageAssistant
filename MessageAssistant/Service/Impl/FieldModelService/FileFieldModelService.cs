@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using MessageAssistant.Constant;
+using MessageAssistant.Exceptions;
 using MessageAssistant.Model;
 using MessageAssistant.Util;
 
@@ -51,7 +52,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                throw new BizException($"解析{file}文件失败.");
             }
             return null;
         }
