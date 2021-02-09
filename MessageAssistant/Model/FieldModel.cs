@@ -19,8 +19,7 @@ namespace MessageAssistant.Model
         public String DefaultValue { get; set; }
         public String Value { get; set; }
         public String OriginalContent { get; set; }
-
-        public bool IsLittleEndian { get { return Endian == MessageXmlConst.ENDIAN_LITTLE; } }
+        public bool IsLittleEndian { get { return  MessageXmlConst.ENDIAN_LITTLE.Equals(Endian); } }
 
         public override int GetLength()
         {

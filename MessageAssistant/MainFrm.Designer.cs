@@ -62,26 +62,26 @@
             // tsmiDecompse
             // 
             this.tsmiDecompse.Name = "tsmiDecompse";
-            this.tsmiDecompse.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDecompse.Size = new System.Drawing.Size(118, 22);
             this.tsmiDecompse.Text = "分解";
             this.tsmiDecompse.Click += new System.EventHandler(this.tsmiDecompse_Click);
             // 
             // tsmiCompose
             // 
             this.tsmiCompose.Name = "tsmiCompose";
-            this.tsmiCompose.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCompose.Size = new System.Drawing.Size(118, 22);
             this.tsmiCompose.Text = "组装";
             this.tsmiCompose.Click += new System.EventHandler(this.tsmiCompose_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(115, 6);
             // 
             // tsmiQuit
             // 
             this.tsmiQuit.Name = "tsmiQuit";
-            this.tsmiQuit.Size = new System.Drawing.Size(152, 22);
+            this.tsmiQuit.Size = new System.Drawing.Size(118, 22);
             this.tsmiQuit.Text = "退出(&Q)";
             this.tsmiQuit.Click += new System.EventHandler(this.tsmiQuit_Click);
             // 
@@ -95,6 +95,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainFrm";
             this.Text = "报文助手";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

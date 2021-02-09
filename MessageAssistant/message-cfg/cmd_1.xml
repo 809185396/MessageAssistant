@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <message endian="big" cmd="0x1" name="1号报文" description="">
+  <!-- 示例报文 FE 00 0F FF 14 00 05 00 06 00 07 00 08 01 02 03 04 05 06 07 40 9c 01 02 03 04 05  -->
   <field name="header-id" description="头部标识" default="0xfe" type="byte" length="1"></field>
   <if-field name ="if1" expr="true">
     <field name="if1-1" description="if1-1 descr" default="0xfe" type="short" length="2"></field>
@@ -16,4 +17,5 @@
     <bit-child name="composite1-1" description="composite1-1 descr" default="0xfe" type="short" length="4"/>
     <bit-child name="composite1-2" description="composite1-2 descr" default="0xfe" type="short" length="12"/>
   </bit-field>
+  <file-field name="cp56time2a" description="" file="cp56time2a.xml"/>
 </message>

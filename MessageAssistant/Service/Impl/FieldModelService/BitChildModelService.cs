@@ -19,6 +19,10 @@ namespace MessageAssistant.Service.Impl.FieldModelService
                 return;
             }
             BitChildModel child = (BitChildModel)field;
+            if (String.IsNullOrEmpty(child.Endian))
+            {
+                child.Endian = model.Endian;
+            }
             double val = 0;
             switch (child.DataType)
             {

@@ -78,12 +78,6 @@ namespace MessageAssistant.Views
                 WrapMessageBox.Error(ex.Message);
             }
         }
-
-        private void btnCompose_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void BindMessageModel(MessageModel model)
         {
             dataGridView1.Rows.Clear();
@@ -130,8 +124,8 @@ namespace MessageAssistant.Views
             var row = dataGridView1.Rows[index];
             row.Tag = field;
             row.Cells[0].Value = field.Name;
-            row.Cells[1].Value = field.DataType;
-            row.Cells[2].Value = field.Description;
+            row.Cells[1].Value = field.Description;
+            row.Cells[2].Value = field.DataType;
             row.Cells[3].Value = field.OriginalContent;
             row.Cells[4].Value = field.DefaultValue;
             row.Cells[5].Value = field.Value;

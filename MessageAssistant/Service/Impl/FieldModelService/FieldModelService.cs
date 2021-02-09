@@ -54,6 +54,10 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             }
 
             FieldModel fieldModel = (FieldModel)field;
+            if (String.IsNullOrEmpty(fieldModel.Endian))
+            {
+                fieldModel.Endian = model.Endian;
+            }
             int len = GetNeedLengthAccordDataType(fieldModel.DataType);
             // 保证临时空间够装入要读取的字节数量。
             len = len > fieldModel.Length ? len : fieldModel.Length;

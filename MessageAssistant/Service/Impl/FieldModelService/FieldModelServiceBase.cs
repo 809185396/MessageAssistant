@@ -93,6 +93,8 @@ namespace MessageAssistant.Service.Impl.FieldModelService
                     return new BitFieldModelService();
                 case MessageXmlConst.BIT_CHILD:
                     return new BitChildModelService();
+                case MessageXmlConst.FILE_FIELD:
+                    return new FileFieldModelService();
                 default:
                     return null;
             }
