@@ -20,7 +20,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             }
             BitChildModel child = (BitChildModel)field;
             double val = 0;
-            switch (child.Type)
+            switch (child.DataType)
             {
                 case MessageXmlConst.TYPE_BYTE:
                     val = buf.ReadByte();
@@ -56,6 +56,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             }
             val = val - child.Offset;
             child.Value = val.ToString();
+            child.OriginalContent = StringConverter.byteToHexStr(buf.ToArray());
         }
 
         protected override FieldModelBase _Read(String strDir, XmlElement e)
@@ -63,11 +64,16 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             BitChildModel model = new BitChildModel();
             _Read(e, model);
             model.Length = e.GetAttributeInt(MessageXmlConst.LENGTH);
-            model.Type= e.GetAttributeEx(MessageXmlConst.TYPE);
+            model.DataType= e.GetAttributeEx(MessageXmlConst.TYPE);
             model.Rate = e.GetAttributeDouble(MessageXmlConst.RATE, 1);
             model.Offset = e.GetAttributeDouble(MessageXmlConst.OFFSET, 0);
             model.Skip = e.GetAttributeEx(MessageXmlConst.SKIP, MessageXmlConst.SKIP_FALSE);
             return model;
+        }
+
+        protected override void _CollectValueField(List<FieldModelBase> fields, FieldModelBase field)
+        {
+            fields.Add(field);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace MessageAssistant.Util
             Array.Copy(bytes, 0, buf, 0, buf.Length);
             this.capacity = buf.Length;
             this.readIndex = 0;
-            this.writeIndex = bytes.Length + 1;
+            this.writeIndex = bytes.Length;
         }
 
         /// <summary>

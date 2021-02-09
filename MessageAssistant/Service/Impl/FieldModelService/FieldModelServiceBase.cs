@@ -29,6 +29,16 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             }
         }
 
+        public static void CollectValueField(List<FieldModelBase> fields, FieldModelBase field)
+        {
+            FieldModelServiceBase srv = _getFieldModelBaseService(field);
+            if (srv != null)
+            {
+                srv._CollectValueField(fields, field);
+            }
+        }
+        protected abstract void _CollectValueField(List<FieldModelBase> fields, FieldModelBase field);
+
         protected abstract FieldModelBase _Read(String strDir, XmlElement e);
 
         protected abstract void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf);

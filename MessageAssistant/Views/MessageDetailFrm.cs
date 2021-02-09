@@ -15,6 +15,12 @@ namespace MessageAssistant.Views
         public MessageDetailFrm()
         {
             InitializeComponent();
+            dataGridView1.Columns[0].DataPropertyName = "Name";
+            dataGridView1.Columns[1].DataPropertyName = "DataType";
+            dataGridView1.Columns[2].DataPropertyName = "Description";
+            dataGridView1.Columns[3].DataPropertyName = "OriginalContent";
+            dataGridView1.Columns[4].DataPropertyName = "DefaultValue";
+            dataGridView1.Columns[5].DataPropertyName = "Value";
         }
 
         private void MessageDetailFrm_Load(object sender, EventArgs e)
@@ -65,8 +71,7 @@ namespace MessageAssistant.Views
                 byte[] btMsg = MessageAssistant.Util.StringConverter.hexStrToToByte(strMsg2);
                 MessageService service = new MessageService();
                 model = service.Decomposite(model, btMsg);
-                dataGridView1.Rows.Clear();
-
+                BindMessageModel(model);
             }
             catch (Exception ex)
             {
@@ -82,40 +87,75 @@ namespace MessageAssistant.Views
         private void BindMessageModel(MessageModel model)
         {
             dataGridView1.Rows.Clear();
-            foreach (var child in model.Fields)
-            {
-                AddField(model, child);
-            }
+            model.Fields.ForEach(r => AddField(model, r));
+            
         }
 
         private void AddField(MessageModel model,FieldModelBase field)
         {
-            throw new NotImplementedException("");
+            if(field is BitFieldModel)
+            {
+                AddField(model, field as BitFieldModel);
+            } else if( field is BitChildModel)
+            {
+                AddField(model, field as BitChildModel);
+            } else if(field is FieldModel)
+            {
+                AddField(model, field as FieldModel);
+            } else if(field is IfFieldModel)
+            {
+                AddField(model, field as IfFieldModel);
+            } else if(field is RepeatFieldModel)
+            {
+                AddField(model, field as RepeatFieldModel);
+            } else if (field is FileFieldModel)
+            {
+                AddField(model, field as FileFieldModel);
+            }
         }
 
         private void AddField(MessageModel model, BitFieldModel field)
         {
+            field.Children.ForEach(r => AddField(model, r));
+        }
 
+        private void AddField(MessageModel model, BitChildModel field)
+        {
+            AddField(model, (FieldModel)field);
         }
 
         private void AddField(MessageModel model, FieldModel field)
         {
-            dataGridView1.Rows.Add();
+            int index = dataGridView1.Rows.Add();
+            var row = dataGridView1.Rows[index];
+            row.Tag = field;
+            row.Cells[0].Value = field.Name;
+            row.Cells[1].Value = field.DataType;
+            row.Cells[2].Value = field.Description;
+            row.Cells[3].Value = field.OriginalContent;
+            row.Cells[4].Value = field.DefaultValue;
+            row.Cells[5].Value = field.Value;
         }
 
         private void AddField(MessageModel model, IfFieldModel field)
         {
-
+            if (field.Value)
+            {
+                field.Children.ForEach(r => AddField(model, r));
+            }
         }
 
         private void AddField(MessageModel model, RepeatFieldModel field)
         {
-
+            field.Children.ForEach(r =>
+            {
+                r.ForEach(r1 => AddField(model, r1));
+            });
         }
 
-        private void AddField(FileFieldModel field)
+        private void AddField(MessageModel model, FileFieldModel field)
         {
-
+            field.Children.ForEach(r => AddField(model, r));
         }
     }
 

@@ -1,37 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using MessageAssistant.Model;
 using MessageAssistant.Util;
 using MessageAssistant.Constant;
+using System.Collections.Generic;
 
 namespace MessageAssistant.Service.Impl.FieldModelService
 {
     class FieldModelService : FieldModelServiceBase
     {
-        protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
+        public static int GetNeedLengthAccordDataType(String type)
         {
-            if(!(field is FieldModel))
-            {
-                throw new ArgumentException("argument is not ");
-            }
-
-            FieldModel fieldModel = (FieldModel)field;
             int len = 0;
-            switch (fieldModel.Type)
+            switch (type)
             {
                 case MessageXmlConst.TYPE_BYTE:
                     len = 1;
                     break;
                 case MessageXmlConst.TYPE_SHORT:
                     len = 2;
-                    return;
+                    break;
                 case MessageXmlConst.TYPE_USHORT:
                     len = 2;
-                    return;
+                    break; 
                 case MessageXmlConst.TYPE_INT:
                     len = 4;
                     break;
@@ -44,12 +35,26 @@ namespace MessageAssistant.Service.Impl.FieldModelService
                 case MessageXmlConst.TYPE_ULONG:
                     len = 8;
                     break;
-                case MessageXmlConst.TYPE_ASTRING:
-                    len = fieldModel.Length;
-                    break;
                 default:
                     break;
             }
+            return len;
+        }
+
+        protected override void _CollectValueField(List<FieldModelBase> fields, FieldModelBase field)
+        {
+            fields.Add(field);
+        }
+
+        protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
+        {
+            if(!(field is FieldModel))
+            {
+                throw new ArgumentException("argument is not ");
+            }
+
+            FieldModel fieldModel = (FieldModel)field;
+            int len = GetNeedLengthAccordDataType(fieldModel.DataType);
             // 保证临时空间够装入要读取的字节数量。
             len = len > fieldModel.Length ? len : fieldModel.Length;
             byte[] bts = new byte[len];
@@ -60,7 +65,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             buf.ReadBytes(bts, 0, fieldModel.Length);
             ByteBuffer tmp = ByteBuffer.Allocate(bts);
             double val = 0;
-            switch (fieldModel.Type)
+            switch (fieldModel.DataType)
             {
                 case MessageXmlConst.TYPE_BYTE:
                     val = tmp.ReadByte();
@@ -96,6 +101,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             }
             val = val - fieldModel.Offset;
             fieldModel.Value = val.ToString();
+            fieldModel.OriginalContent = StringConverter.byteToHexStr(bts);
         }
 
         protected override FieldModelBase _Read(String strDir, XmlElement e)
@@ -105,7 +111,7 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             String str = e.GetAttributeEx(MessageXmlConst.ENDIAN, null);
             model.Endian = str;
             model.Length = e.GetAttributeInt(MessageXmlConst.LENGTH);
-            model.Type = e.GetAttributeEx(MessageXmlConst.TYPE);
+            model.DataType = e.GetAttributeEx(MessageXmlConst.TYPE);
             model.Rate = e.GetAttributeDouble(MessageXmlConst.RATE, 1);
             model.Offset = e.GetAttributeDouble(MessageXmlConst.OFFSET, 0);
             model.Skip = e.GetAttributeEx(MessageXmlConst.SKIP, MessageXmlConst.SKIP_FALSE);

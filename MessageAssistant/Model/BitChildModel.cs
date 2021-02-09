@@ -35,7 +35,7 @@ namespace MessageAssistant.Model
 
         public override string GetFieldTypeName()
         {
-            return Type;
+            return MessageXmlConst.BIT_CHILD;
         }
 
         public override FieldModelBase GetFieldModelBase(string[] paths)

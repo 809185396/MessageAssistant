@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using MessageAssistant.Constant;
 using MessageAssistant.Model;
@@ -13,6 +10,12 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 {
     class FileFieldModelService : FieldModelServiceBase
     {
+        protected override void _CollectValueField(List<FieldModelBase> fields, FieldModelBase field)
+        {
+            FileFieldModel f = field as FileFieldModel;
+            f.Children.ForEach(r => CollectValueField(fields, r));
+        }
+
         protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
         {
             FileFieldModel f = field as FileFieldModel;

@@ -11,5 +11,6 @@ namespace MessageAssistant.Service
     {
         byte[] Composite(MessageModel model);
         MessageModel Decomposite(MessageModel model, byte[] message);
+        List<FieldModelBase> CollectValueField(MessageModel m);
     }
 }

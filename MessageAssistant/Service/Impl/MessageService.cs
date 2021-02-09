@@ -13,6 +13,15 @@ namespace MessageAssistant.Service.Impl
 {
     class MessageService : IMessageService
     {
+        public List<FieldModelBase> CollectValueField(MessageModel model)
+        {
+            List<FieldModelBase> fields = new List<FieldModelBase>();
+            model.Fields.ForEach(r =>            {
+                FieldModelServiceBase.CollectValueField(fields, r);
+            });
+            return fields;
+        }
+
         public byte[] Composite(MessageModel model)
         {
             throw new NotImplementedException();
@@ -30,10 +39,7 @@ namespace MessageAssistant.Service.Impl
             ByteBuffer buf = ByteBuffer.Allocate(message);
             model.Fields.ForEach(r =>
             {
-                if (r is FieldModel)
-                {
-                    FieldModelServiceBase.Decomposite(model, (FieldModel)r, buf);
-                }
+                FieldModelServiceBase.Decomposite(model, r, buf);
             });
             return model; 
         }

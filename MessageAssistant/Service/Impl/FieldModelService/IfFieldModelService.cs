@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Xml;
 using MessageAssistant.Constant;
 using MessageAssistant.Exceptions;
@@ -13,6 +12,12 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 {
     class IfFieldModelService : FieldModelServiceBase
     {
+        protected override void _CollectValueField(List<FieldModelBase> fields, FieldModelBase field)
+        {
+            IfFieldModel f = field as IfFieldModel;
+            f.Children.ForEach(r => CollectValueField(fields, r));
+        }
+
         protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
         {
             IfFieldModel f = field as IfFieldModel;
@@ -21,8 +26,9 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             bool result = false;
             if(!bool.TryParse(obj.ToString(), out result))
             {
-                // TODO: 表达式错误
+                throw new BizException($"{f.Expression} is invalid");
             }
+            f.Value = result;
             if (!result)
             {
                 return;

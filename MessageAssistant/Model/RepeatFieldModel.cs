@@ -15,6 +15,9 @@ namespace MessageAssistant.Model
     class RepeatFieldModel :FieldModelBase
     {
         public String Expression { get; set; }
+
+        public int Value { get; set; } = 1;
+
         public List<List<FieldModelBase>> Children { get; private set; } = new List<List<FieldModelBase>>();
 
         public RepeatFieldModel()

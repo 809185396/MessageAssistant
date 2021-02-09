@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using MessageAssistant.Constant;
 using MessageAssistant.Exceptions;
@@ -13,6 +10,12 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 {
     class BitFieldModelService : FieldModelServiceBase
     {
+        protected override void _CollectValueField(List<FieldModelBase> fields, FieldModelBase field)
+        {
+            var f = field as BitFieldModel;
+            f.Children.ForEach(r => CollectValueField(fields, r));
+        }
+
         protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
         {
             var f = field as BitFieldModel;
@@ -22,9 +25,13 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             BitChildModelService childService = new BitChildModelService();
             foreach (var child in f.Children)
             {
-                int chileLen = child.GetLength();
-                byte[] btsChild = new byte[chileLen];
-                BitUtil.GetBits(bts, btsChild, loc, chileLen);
+                int len = FieldModelService.GetNeedLengthAccordDataType(child.DataType);
+                int childByteLen = child.GetLength();
+                len = len > childByteLen ? len : childByteLen;
+                byte[] btsChild = new byte[len];
+
+                BitUtil.GetBits(bts, btsChild, loc, child.Length);
+                loc += child.Length;
                 ByteBuffer childBuf = ByteBuffer.Allocate(btsChild);
                 Decomposite(model, child, childBuf);
             }

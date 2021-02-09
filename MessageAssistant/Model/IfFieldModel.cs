@@ -11,6 +11,8 @@ namespace MessageAssistant.Model
     {
         public String Expression { get; set; }
 
+        public Boolean Value { get; set; } = false;
+
         public List<FieldModelBase> Children { get; private set; } = new List<FieldModelBase>();
         public override string GetFieldTypeName()
         {

@@ -11,6 +11,15 @@ namespace MessageAssistant.Service.Impl.FieldModelService
 {
     class RepeatFieldModelService : FieldModelServiceBase
     {
+        protected override void _CollectValueField(List<FieldModelBase> fields, FieldModelBase field)
+        {
+            RepeatFieldModel f = field as RepeatFieldModel;
+            f.Children.ForEach(r =>
+            {
+                r.ForEach(r1 => CollectValueField(fields, r1));
+            });
+        }
+
         protected override void _Decomposite(MessageModel model, FieldModelBase field, ByteBuffer buf)
         {
             RepeatFieldModel f = field as RepeatFieldModel;
@@ -20,18 +29,19 @@ namespace MessageAssistant.Service.Impl.FieldModelService
             int result = 0;
             if (!int.TryParse(obj.ToString(), out result))
             {
-                // TODO: 表达式错误
+                throw new BizException($"{f.Expression} is invalid");
             }
+            f.Value = result;
             List<FieldModelBase> next = null;
             List<FieldModelBase> cur = null;
             for (int i = 0; i < result; ++i)
             {
                 next = null;
                 cur = f.Children[i];
-                if(i < result - 1 && f.Children.Count == i)
+                if(i < result - 1)
                 {
                     next = new List<FieldModelBase>();
-                    f.Children.Add(next);                  
+                    f.Children.Add(next);
                 }
                 foreach (var child in cur)
                 {
