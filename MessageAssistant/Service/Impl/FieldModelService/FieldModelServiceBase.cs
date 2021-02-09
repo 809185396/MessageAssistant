@@ -1,10 +1,10 @@
-﻿using MessageAssistant.Constant;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Xml;
+using MessageAssistant.Constant;
 using MessageAssistant.Model;
 using MessageAssistant.Util;
-using System;
-using System.Collections.Generic;
-using System.Xml;
-using System.Text.RegularExpressions;
 
 namespace MessageAssistant.Service.Impl.FieldModelService
 {

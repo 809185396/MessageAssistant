@@ -1,5 +1,5 @@
-﻿using MessageAssistant.Constant;
-using System;
+﻿using System;
+using MessageAssistant.Constant;
 using MessageAssistant.Util;
 
 namespace MessageAssistant.Model

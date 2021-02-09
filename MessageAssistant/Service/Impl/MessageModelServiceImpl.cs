@@ -1,10 +1,10 @@
 ﻿using System;
-using MessageAssistant.Model;
 using System.Xml;
 using MessageAssistant.Constant;
-using MessageAssistant.Util;
-using MessageAssistant.Service.Impl.FieldModelService;
 using MessageAssistant.Exceptions;
+using MessageAssistant.Model;
+using MessageAssistant.Service.Impl.FieldModelService;
+using MessageAssistant.Util;
 
 namespace MessageAssistant.Service.Impl
 {

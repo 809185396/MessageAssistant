@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml;
+using MessageAssistant.Constant;
 using MessageAssistant.Model;
 using MessageAssistant.Util;
-using MessageAssistant.Constant;
-using System.Collections.Generic;
 
 namespace MessageAssistant.Service.Impl.FieldModelService
 {
